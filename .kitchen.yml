@@ -1,17 +1,20 @@
 ---
 driver:
   name: vagrant
+  provider: hyperv
+  network:
+  - ["public_network", {bridge: "ExternalNAT"}]
 
 provisioner:
   name: chef_zero
 
 platforms:
-  - name: windows-8.1
+  - name: windows-2012R2
     transport:
       name: winrm
     driver:
       guest: :windows
-      box: mwrock/Windows8.1-amd64
+      box: Windows2012R2
 
 suites:
   - name: default
